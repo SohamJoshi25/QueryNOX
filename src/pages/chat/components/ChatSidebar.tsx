@@ -212,7 +212,7 @@ export function ChatSidebar() {
                       <span>{showBookmarks ? 'Hide Bookmarks' : 'Bookmarks'}</span>
                     </SidebarMenuButton>
                     {showBookmarks && (
-                      <SidebarMenu className="ml-3 mt-1 flex flex-col gap-1 transition-all duration-300 w-[calc(100%)-20px]">
+                      <SidebarMenu className="ml-3 mt-1 flex flex-col gap-1 transition-all duration-300 w-[calc(100%)-20px] group-data-[state=collapsed]:hidden">
                         {(bookmarkedData?.chats || []).map((b) => (
                           <SidebarMenuItem key={b._id} >
                             <SidebarMenuButton asChild >
@@ -244,8 +244,8 @@ export function ChatSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
 
-          {chats.length > 0 && <SidebarGroup className="mt-0 py-0 overflow-hidden group-data-[state=expanded]:pr-0">
-            <SidebarGroupLabel className="">Previous Chats</SidebarGroupLabel>
+          {chats.length > 0 && <SidebarGroup className="mt-0 py-0 overflow-hidden group-data-[state=expanded]:pr-0 group-data-[state=collapsed]:hidden">
+            <SidebarGroupLabel className="group-data-[state=collapsed]:hidden">Previous Chats</SidebarGroupLabel>
             <SidebarGroupContent className="h-full overflow-auto group-data-[state=collapsed]:overflow-clip ml-0 thin-scrollbar pr-2.5">
               <SidebarMenu>
                 {chats.map((chat,index)=>
